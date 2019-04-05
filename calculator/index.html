@@ -12,27 +12,83 @@
       </style> 
       <script>
             document.addEventListener("DOMContentLoaded", function(){
-              document.querySelector("#minus").addEventListener("click",function(){
-                  var count = document.querySelector(".count").innerText;
-                  count = parseInt(count,10) -1
-                  document.querySelector(".count").innerText = count
+              
+
+              document.querySelector("#minus1").addEventListener("click",function(){
+                var number=document.querySelector("#ans").value;
+                 number=parseInt(number ,10) -1
+                 document.querySelector("#ans").value=number
               })
-              document.querySelector("#plus").addEventListener("click",function(){
-                  var count = document.querySelector(".count").innerText;
-                  count = parseInt(count,10) +1
-                  document.querySelector(".count").innerText = count
+
+              document.querySelector("#plus1").addEventListener("click",function(){
+                var number=document.querySelector("#ans").value;
+                 number=parseInt(number ,10) +1
+                 document.querySelector("#ans").value=number
+              })
+              
+              document.getElementsByClassName(".num").addEventListener("click",function(){
+                var number=document.getElementById("#ans");
+                for(i=0;i<=10;i++){
+                    document.querySelector(".num")[i].addEventListener("click",function(){
+                        number +=document.querySelector(".num")[i].value
+                    })
+
+                }return number
 
               })
+            //   document.querySelector("#number1").addEventListener("click",function(){
+            //     var number=document.querySelector("#number1").value;
+            //      number=parseInt(number ,10) 
+            //      document.querySelector("#ans").value=number
+            //   })
+            //   document.querySelector("#number2").addEventListener("click",function(){
+            //     var number=document.querySelector("#number2").value;
+            //      number=parseInt(number ,10) 
+            //      document.querySelector("#ans").value=number
+            //   })
+            //   document.querySelector("#number3").addEventListener("click",function(){
+            //     var number=document.querySelector("#number3").value;
+            //      number=parseInt(number ,10) 
+            //      document.querySelector("#ans").value=number
+            //   })
+             
+
+              
             })
             
     
         </script>
 </head>
 <body>
-    <div class="count">
-        0
+    
+    <input type="text" id="ans" value="0">
+    <input type="button"  id="minus1" value="-1">
+    <input type="button"  id="plus1" value="+1">
+    <div>
+        <input type="button"  id="plus" class= "math" value="+">
+        <input type="button"  id="minus" class= "math" value="-">
+        <input type="button"  id="mult" class= "math" value="*">
+        <input type="button"  id="divided" class= "math" value="/">
+        <input type="button"  id="total" class= "math" value="=">
+
+
     </div>
-    <input type="button"  id="minus" value="-1">
-    <input type="button"  id="plus" value="+1">
+    <div>
+        <input type="button"  id="number1"  class="num" value="1">
+        <input type="button"  id="number2"  class="num" value="2">
+        <input type="button"  id="number3"  class="num" value="3">
+        <br>
+        <input type="button"  id="number4"  class="num" value="4">
+        <input type="button"  id="number5"  class="num" value="5">
+        <input type="button"  id="number6"  class="num" value="6">
+        <br>
+        <input type="button"  id="number7"  class="num" value="7">
+        <input type="button"  id="number8"  class="num" value="8">
+        <input type="button"  id="number9"  class="num" value="9">
+        <br>
+        <input type="button"  id="number0"  class="num" value="0">
+
+
+    </div> 
 </body>
 </html>
