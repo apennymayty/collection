@@ -5,8 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To Do List</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+
+            document.querySelector("#add").addEventListener("click",function(){
+                var text = document.querySelector(".text");
+                document.querySelector(".list").innerHTML += "<li>"+text.value +"</li>"
+                text.value = ""
+            })
+
+        })
+    </script>
 </head>
 <body>
-    
+    <div>
+        <ul class = "list">
+            <li>買早餐</li>
+            <li>買午餐</li>
+        </ul>
+    </div>
+    <div>
+        <input type="text" class = "text" placeholder="請輸入todo">
+        <input type="button" id = "add" value="新增">
+    </div>
 </body>
 </html>
