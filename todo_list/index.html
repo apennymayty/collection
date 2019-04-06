@@ -11,8 +11,16 @@
 
             document.querySelector("#add").addEventListener("click",function(){
                 var text = document.querySelector(".text");
+                //其中一種寫法
+                /*
                 document.querySelector(".list").innerHTML += "<li>"+text.value +"</li>"
                 text.value = ""
+                */
+                //另一種寫法
+                var item=document.createElement("li")
+                item.innerText = text.value
+                document.querySelector(".list").appendChild(item)
+                text.value=""
             })
 
         })
