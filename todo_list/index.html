@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To Do List</title>
-
+    <style type="text/css">
+        .close {
+            color:red;
+        }
+        .close:hover{
+            cursor:pointer;
+        }
+    </style>
     <script>
         document.addEventListener("DOMContentLoaded",function(){
 
@@ -17,25 +24,43 @@
                 text.value = ""
                 */
                 //另一種寫法
-                var item=document.createElement("li")
-                item.innerText = text.value
+                var item = document.createElement("li")
+                item.innerHTML = `<div>${text.value}
+                    <span class="close" data-text="${text.value}">x</span>
+                    </div>
+                
+                `
                 document.querySelector(".list").appendChild(item)
                 text.value=""
-            })
 
+                
+            })
+            document.querySelector(".list").addEventListener("click",function(e){
+                
+                for (i=0;i<e.target.classList.length;i++){
+                   // console.log("class:" + e.target.classList[i])
+                    if(e.target.classList[i]==="close"){
+                        console.log(e.target.parentNode.parentNode)
+                        e.target.parentNode.parentNode.outerHTML=""
+                        //或最後一行可寫成
+                        //document.querySelector(".list").removeChild(e.target.parentNode.parentNode)
+                    }
+                }
+            })
         })
     </script>
 </head>
 <body>
     <div>
         <ul class = "list">
-            <li>買早餐</li>
+            <li class="第一個">買早餐</li>
             <li>買午餐</li>
         </ul>
     </div>
     <div>
         <input type="text" class = "text" placeholder="請輸入todo">
         <input type="button" id = "add" value="新增">
+      
     </div>
 </body>
 </html>
