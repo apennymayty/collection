@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,86 +10,110 @@
         .count{
             margin:1cm
         }
-      </style> 
-      <script>
-            document.addEventListener("DOMContentLoaded", function(){
-              
-
-              document.querySelector("#minus1").addEventListener("click",function(){
-                var number=document.querySelector("#ans").value;
-                 number=parseInt(number ,10) -1
-                 document.querySelector("#ans").value=number
-              })
-
-              document.querySelector("#plus1").addEventListener("click",function(){
-                var number=document.querySelector("#ans").value;
-                 number=parseInt(number ,10) +1
-                 document.querySelector("#ans").value=number
-              })
-              
-              document.getElementsByClassName(".num").addEventListener("click",function(){
-                var number=document.getElementById("#ans");
-                for(i=0;i<=10;i++){
-                    document.querySelector(".num")[i].addEventListener("click",function(){
-                        number +=document.querySelector(".num")[i].value
-                    })
-
-                }return number
-
-              })
-            //   document.querySelector("#number1").addEventListener("click",function(){
-            //     var number=document.querySelector("#number1").value;
-            //      number=parseInt(number ,10) 
-            //      document.querySelector("#ans").value=number
-            //   })
-            //   document.querySelector("#number2").addEventListener("click",function(){
-            //     var number=document.querySelector("#number2").value;
-            //      number=parseInt(number ,10) 
-            //      document.querySelector("#ans").value=number
-            //   })
-            //   document.querySelector("#number3").addEventListener("click",function(){
-            //     var number=document.querySelector("#number3").value;
-            //      number=parseInt(number ,10) 
-            //      document.querySelector("#ans").value=number
-            //   })
-             
-
-              
+      </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var number = document.querySelector("#ans").value
+            var op = ""
+            //減1
+            document.querySelector("#minus1").addEventListener("click", function () {
+                //number = document.querySelector("#ans").value;
+                number = parseInt(number, 10) - 1
+                document.querySelector("#ans").value = number
             })
-            
-    
-        </script>
+            //加1
+            document.querySelector("#plus1").addEventListener("click", function () {
+                //number = document.querySelector("#ans").value;
+                number = parseInt(number, 10) + 1
+                document.querySelector("#ans").value = number
+            })
+
+            //按數字
+            document.querySelector(".num").addEventListener("click", function (e) {
+                //number = document.querySelector("#ans").value
+                //console.log(e.target.id) //id 
+                //console.log(document.getElementById(e.target.id).value) //id的value
+                var count1 = document.getElementById(e.target.id).value
+                number += count1
+                document.querySelector("#ans").value = parseInt(number, 10)
+                //console.log(number)
+
+            })
+
+            //按運算符號
+            document.querySelector(".operator").addEventListener("click", function (e) {
+
+                firstCount = number
+                //console.log(e.target.id) //id 
+                //console.log("id的值＝",document.getElementById(e.target.id).value) //id的value
+                compute = document.getElementById(e.target.id).value //var count1 = document.getElementById(e.target.id).value
+                //console.log(op)
+                number = "0"
+            })
+            //按等於
+            document.querySelector("#total").addEventListener("click", function (e) {
+                secondCount = number
+                Op("=")
+
+            })
+
+            function Op(op) {
+                
+                    if (compute === "+") {
+                        number = parseInt(firstCount, 10) + parseInt(secondCount, 10)
+                        document.querySelector("#ans").value = number
+                    } else if (compute === "-") {
+                        number = parseInt(firstCount, 10) - parseInt(secondCount, 10)
+                        document.querySelector("#ans").value = number
+                    } else if (compute === "*") {
+                        number = parseInt(firstCount, 10) * parseInt(secondCount, 10)
+                        document.querySelector("#ans").value = number
+                    } else if (compute === "/") {
+                        number = parseInt(firstCount, 10) / parseInt(secondCount, 10)
+                        document.querySelector("#ans").value = number
+                    }
+              
+
+            }
+        })
+
+
+    </script>
 </head>
+
 <body>
-    
+
     <input type="text" id="ans" value="0">
-    <input type="button"  id="minus1" value="-1">
-    <input type="button"  id="plus1" value="+1">
-    <div>
-        <input type="button"  id="plus" class= "math" value="+">
-        <input type="button"  id="minus" class= "math" value="-">
-        <input type="button"  id="mult" class= "math" value="*">
-        <input type="button"  id="divided" class= "math" value="/">
-        <input type="button"  id="total" class= "math" value="=">
+    <input type="button" id="minus1" value="-1">
+    <input type="button" id="plus1" value="+1">
+    <div class="btn-pad">
+        <div class="operator">
+            <input type="button" id="plus"  value="+">
+            <input type="button" id="minus" value="-">
+            <input type="button" id="mult" value="*">
+            <input type="button" id="divided"  value="/">
+            <input type="button" id="total" value="=">
 
 
+        </div>
+        <div class="num">
+            <input type="button" id="number1" value="1">
+            <input type="button" id="number2" value="2">
+            <input type="button" id="number3" value="3">
+            <br>
+            <input type="button" id="number4" value="4">
+            <input type="button" id="number5" value="5">
+            <input type="button" id="number6" value="6">
+            <br>
+            <input type="button" id="number7" value="7">
+            <input type="button" id="number8" value="8">
+            <input type="button" id="number9" value="9">
+            <br>
+            <input type="button" id="number0" value="0">
+
+
+        </div>
     </div>
-    <div>
-        <input type="button"  id="number1"  class="num" value="1">
-        <input type="button"  id="number2"  class="num" value="2">
-        <input type="button"  id="number3"  class="num" value="3">
-        <br>
-        <input type="button"  id="number4"  class="num" value="4">
-        <input type="button"  id="number5"  class="num" value="5">
-        <input type="button"  id="number6"  class="num" value="6">
-        <br>
-        <input type="button"  id="number7"  class="num" value="7">
-        <input type="button"  id="number8"  class="num" value="8">
-        <input type="button"  id="number9"  class="num" value="9">
-        <br>
-        <input type="button"  id="number0"  class="num" value="0">
-
-
-    </div> 
 </body>
+
 </html>
